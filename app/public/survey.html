@@ -138,87 +138,76 @@
         </div>
 
         <!-- Materialize Modal Structure -->
-        <div id="modal1" class="modal">
-          <div class="modal-content">
-            <h4>Meet Your New BFF</h4>
-            <h5 id="matchName"></h5>
-            <img id="matchPic" src="" alt="No Image" width = 250px>
-          </div>
-        <div class="modal-footer">
-          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Done</a>
+        <div id="resultModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+              <div class = "modal-content">
+                  <button type="button" class="close" data-dismiss="">
+                      &times;
+                  </button>
+                  <h2 class="modal-title"><strong>Here Yo GO!</strong></h2>
+              </div>
+              
+              <div class="modal-body">
+                  <h2 id="matchName"></h2>
+                  <img
+                  id="matchImg" 
+                  src="/app/data/friends.js" 
+                  alt="no image"
+                  width="250px">
+                  
+              </div>
+            
+       <div class="modal-footer">
+            <button type="button" class="modal-action modal-close waves-effect waves-green btn-flat">
+                Done
+          </button>
+        </div> 
         </div>
       </div>
 
     </div>
 
-<!-- Grabs information and sends it to server -->
-<script type="text/javascript">
-$(document).ready(function() {
-    $("#submitBtn").on("click", function() {
-        //form validation
-        function validateForm() {
-            var isValid = true;
-            $('.validate').each(function() {
-                if ($(this).val() === ''){
-                    isValid = false;
-                }
-            });
-            $('.browser-default').each(function() {
-                if ($(this).val() === ""){
-                    isValid = false;
-                }
-            });
-            return isValid;
-        }
-        //if everything is filled
-        if (validateForm() == true) {
-            //creates a new friend from the values submitted
-            var newFriend = {
-                name: $('#name').val().trim(),
-                profilePic: $('#photo').val().trim(),
-                scores: [
-                    $('#q1').val(),
-                    $('#q2').val(),
-                    $('#q3').val(),
-                    $('#q4').val(),
-                    $('#q5').val(),
-                    $('#q6').val(),
-                    $('#q7').val(),
-                    $('#q8').val(),
-                    $('#q9').val(),
-                    $('#q10').val(),
-                ]
-            };
-            //Grabs current URL of website
-            var currentURL = window.location.origin;
-            //AJAX posts the data to friends API.
-            $.post(currentURL + "/api/friends", newFriend, function(data) {
-                //Grab the result from the AJAX post so that the best match's name and photo are displayed.
-                $("#matchName").text(data.name);
-                $("#matchPic").attr("src", data.profilePic);
-            });
-            // Show the modal with the best match
-                $('.modal').modal();
-            //clear form after submission
-            $('#name').val("");
-            $('#photo').val("");
-            $('#q1').val("");
-            $('#q2').val("");
-            $('#q3').val("");
-            $('#q4').val("");
-            $('#q5').val("");
-            $('#q6').val("");
-            $('#q7').val("");
-            $('#q8').val("");
-            $('#q9').val("");
-            $('#q10').val("");
-        } else {
-            alert("Please fill out ALL fields before submitting survey!")
-        }
-        // return false;
-    });
-});
-</script>
-</body>
 
+ <script> type="text/javascript">
+    $("#submit").on("click", function() {
+        function validateForm() {
+          var isValid = true;
+          $(".form-control").each(function() {
+              if ($(this).val() === "") isValid = false;
+          });
+          $(".chosen-select").each(function() {
+            if ($(this).val() === "") isValid = false;
+          });
+          return isValid;
+        }
+        if(validateForm() === true) {
+            var userData = {
+                name: $("#name").val(),
+                photo: $("#photo").val(),
+                scores: [  $('#q1').val(),
+                      $('#q2').val(),
+                      $('#q3').val(),
+                      $('#q4').val(),
+                      $('#q5').val(),
+                      $('#q6').val(),
+                      $('#q7').val(),
+                      $('#q8').val(),
+                      $('#q9').val(),
+                      $('#q10').val(),
+                      ]
+            };
+             var currentURL = window.location.origin;
+  
+             $.post(currentURL + "/api/friends", userData, function(data){
+                 $("#matchName").text(data.name);
+                 $("#matchImg").attr("src", data.photo);
+                 $("#resultModal").modal("toggle");
+             })
+          }else {
+              alert("Please fill out Everything before you click that button again!")
+          }  
+      
+    });
+    </script>   
+</body>
 </html>
