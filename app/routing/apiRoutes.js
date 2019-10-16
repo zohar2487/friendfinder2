@@ -1,11 +1,12 @@
-var friends = require("../data/friends");
+var friends = require("../data/friends.js");
+
 
 module.exports = function(app){
-    app.get("/api/friends", function(req, res){
+    app.get("./api/friends.js", function(req, res){
         res.json(friends);
     });
 
-    app.post("/api/friends", function(req, res){
+    app.post("./api/friends.js", function(req, res){
         var totalDiference = 0;
         var bestMatch = {
             name: "",
@@ -32,7 +33,7 @@ module.exports = function(app){
         console.log("Sum of users score " + sum);
         console.log("Best match friend diff " + bestMatch.friendDifference);
         console.log("++++++++++++++++++++++==================================");
-         for (var i = 0; i < friends.length; i++) {
+         for (var i = 0; i < length; i++) {
              console.log(friends[i].name);
              totalDiference + 0;
              console.log("Total Diff " + bestMatch.friendDifference);

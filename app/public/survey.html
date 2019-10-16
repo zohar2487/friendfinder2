@@ -130,7 +130,8 @@
                 </select>
                 <br>
                 <!-- Materialize Modal Trigger/Submit Button -->
-                <button type ="submit" data-target="modal1" class="waves-effect waves-light btn modal-trigger cyan lighten-1" id="submitBtn">Submit</button>
+                <a href="/app/data/friends.js">
+                <button type ="submit" data-target="modal1" class="waves-effect waves-light btn modal-trigger cyan lighten-1" id="submitBtn">Submit</button></a>
             </div>
         </div>
         <div class='col s4'>
@@ -157,11 +158,11 @@
                   
               </div>
             
-       <div class="modal-footer">
-            <button type="button" class="modal-action modal-close waves-effect waves-green btn-flat">
-                Done
-          </button>
-        </div> 
+         
+            <img id="matchPic" src="/app/data/friends.js" alt="No Image" width = 250px>
+          </div>
+        <div class="modal-footer">
+          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Done</a>
         </div>
       </div>
 
@@ -204,7 +205,7 @@
                  $("#resultModal").modal("toggle");
              })
           }else {
-              alert("Please fill out Everything before you click that button again!")
+             throw alert("Please fill out Everything before you click that button again!")
           }  
       
     });
