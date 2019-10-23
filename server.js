@@ -9,10 +9,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+require("./app/routing/apiRoutes.js")(app);
+app.use(express.static("app/public"));
 
-app.use(express.static("/app/public/survey.html"));
 
-require("./app/routing/apiRoutes")(app);
-require("./app/routing/htmlRoutes")(app);
+require("./app/routing/htmlRoutes.js")(app);
 
 app.listen(PORT, () => console.log("listening on port %s", PORT));

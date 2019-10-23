@@ -2,11 +2,14 @@ var friends = require("../data/friends.js");
 
 
 module.exports = function(app){
-    app.get("./api/friends.js", function(req, res){
+   
+    console.log(friends);
+    app.get("/api/friends", function(req, res){
         res.json(friends);
+       
     });
 
-    app.post("./api/friends.js", function(req, res){
+    app.post("/api/friends", function(req, res){
         var totalDiference = 0;
         var bestMatch = {
             name: "",

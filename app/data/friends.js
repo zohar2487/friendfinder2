@@ -47,6 +47,6 @@ var friends = [
            "https://www.google.com/imgres?imgurl=https%3A%2F%2Fimg1.nickiswift.com%2Fimg%2Fuploads%2F2017%2F02%2FCarmen-Electra-today-780x438_rev1.jpg&imgrefurl=https%3A%2F%2Fwww.nickiswift.com%2F40443%2Freal-reason-dont-hear-carmen-electra-anymore%2F&docid=zT7ohZkUJpqbNM&tbnid=SKr8AI4y6QrSkM%3A&vet=10ahUKEwjOr6-Sh_XkAhVDjp4KHTpxDRMQMwiHASgPMA8..i&w=780&h=438&bih=688&biw=1361&q=carmen%20electra&ved=0ahUKEwjOr6-Sh_XkAhVDjp4KHTpxDRMQMwiHASgPMA8&iact=mrc&uact=8",
          scores: [1, 2, 4, 4, 4, 5, 1, 1, 2, 4]    
     },
-    module.exports = friends
+    
 ];
-
+module.exports = friends
